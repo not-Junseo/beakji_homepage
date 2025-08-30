@@ -1,0 +1,185 @@
+@font-face {
+    font-family: 'PLight';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Light.woff') format('woff'),
+    url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Light.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'PSemiBold';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff2') format('woff2'),
+    url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'PMedium';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff') format('woff'),
+    url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'PRegular';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff'),
+    url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'PBold';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff') format('woff'),
+    url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+nav {
+    width: 100%;
+    background-color: #EDE6D6;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    height: 40px;
+}
+
+.menu-right {
+    display: flex;
+    gap: 20px; /* 메뉴 간 간격 */
+}
+
+nav ul img {
+    width: 40px;      /* 로고 가로 크기 */
+    height: 40px;     /* 로고 세로 크기 */
+    object-fit: contain; /* 이미지 비율 유지 */
+}
+
+nav ul li {
+    display: inline-block;
+    margin-left: 20px; /* 메뉴 아이템 간 간격 */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #666666;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #333333;
+}
+
+#last-menu{
+    margin-right: 30px;
+}
+
+/* 모바일 반응형 */
+@media (max-width: 900px) {
+    nav ul {
+        flex-direction: row;      /* 가로 유지 */
+        justify-content: space-between; /* 로고 왼쪽, 메뉴 오른쪽 */
+        align-items: center;
+        height: auto;
+        padding: 10px 20px;
+    }
+
+    .menu-right {
+        gap: 15px;
+    }
+
+    nav ul li {
+        margin: 0;
+    }
+
+    #last-menu{
+        margin-right: 0px !important ;
+    }
+
+    h1 {
+        font-size: 40px;
+        padding-left: 5px !important ;
+        padding-right: 5px !important;
+    }
+
+    #main-subtitle {
+        font-size: 16px !important ;
+        padding-left: 5px !important ;
+        padding-right: 5px !important;
+    }
+}
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #EDE6D6;
+    overflow-x:hidden;
+    font-family: 'PSemiBold', 'PRegular', 'PLight', 'PMedium', sans-serif;
+}
+
+.first {
+    height: 90vh; /* 화면 높이의 90% */
+    display: flex;
+    flex-direction: column;  /* 제목 + 부제목 세로 정렬 */
+    justify-content: center; /* 세로 중앙 */
+    align-items: center;     /* 가로 중앙 */
+    text-align: center;      /* 글자 중앙 정렬 */
+}
+
+h1 {
+    margin: 0;
+    font-size: 60px;
+    color: #333333;
+    font-family: 'PSemiBold';
+    padding-top: 100px;
+    padding-bottom: 10px;
+}
+
+#main-subtitle {
+    margin-top: 15px; /* 제목과 부제목 간격 */
+    font-size: 18px;
+    color: #666666;
+    font-family: 'PRegular';
+    padding-bottom: 20px;
+}
+
+
+#changing-text {
+    display: inline-block;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.slide-out {
+    transform: translateY(-50%);
+    opacity: 0;
+}
+
+.slide-in {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+button {
+    font-family: "PRegular";
+    color: #666666;
+    background-color: #EDE6D6;
+    border: 2px solid #666666;
+    border-radius: 120px;
+    padding: 15px 32px;
+    font-size: 15px;
+    margin-right: 10px;
+}
