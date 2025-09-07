@@ -164,11 +164,22 @@ button {
     justify-content: center; /* 세로 중앙 */
     align-items: center;     /* 가로 중앙 */
     text-align: center;      /* 글자 중앙 정렬 */
+    opacity: 1;
+    transform: translate3d(0px, 0px, 0px);
 }
 
-.content-title {
+.main1.show{
+    transform: translateY(0);
+}
+#content-main{
     font-family: "PBold";
     color: #333333;
+    font-size: 50px;
+    margin-top: 20px;
+}
+.content-title {
+    font-family: "PBold";
+    color: #444444;
     font-size: 30px;
     margin-top: 10px;
 }
