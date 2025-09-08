@@ -21,3 +21,18 @@ setInterval(() => {
         }, 500); // transition 시간과 동일
     }, 500); // slide-out transition 시간
 }, 3000);
+
+// Reveal on scroll (Toss-like subtle motion)
+const revealElements = document.querySelectorAll('.reveal');
+if (revealElements.length > 0) {
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                io.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    revealElements.forEach((el) => io.observe(el));
+}

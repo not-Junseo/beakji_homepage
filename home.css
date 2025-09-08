@@ -96,14 +96,15 @@ nav {
     top: 0;
     left: 0;
     z-index: 1000;
+    border-bottom: 1px solid #DCCFBF;
 }
 
 nav ul {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px;
-    height: 40px;
+    padding: 0 24px;
+    height: 64px;
 }
 
 .menu-right {
@@ -197,16 +198,34 @@ button {
     font-size: 15px;
     margin-right: 10px;
 }
+button:hover {
+    background-color: #E4DCCB;
+}
+
+/* Micro interaction for buttons */
+button {
+    transition: transform 0.15s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
 
 .main1 {
-    height: 90vh; /* 화면 높이의 90% */
-    margin-top: 100px;
+    height: auto;
+    margin-top: 72px;
     margin-left: 10%;
-    border-radius: 40px;
+    border-radius: 28px;
     font-family: "PRegular";
     color: #666666;
-    background-color: #DCCFBF;
-    width: 80%;
+    background: #FFFFFF;
+    border: 1px solid #E6DCCB; /* 심플 아웃라인 */
+    width: 76%;
+    max-width: 960px;
     display: flex;
     flex-direction: column;  /* 제목 + 부제목 세로 정렬 */
     justify-content: center; /* 세로 중앙 */
@@ -214,25 +233,289 @@ button {
     text-align: center;      /* 글자 중앙 정렬 */
     opacity: 1;
     transform: translate3d(0px, 0px, 0px);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    padding: 24px 20px;
+    overflow: hidden;
 }
 
-.main1.show{
+/* 기능 단일 카드 (왜-섹션과 동일한 톤) */
+.main2 {
+    height: auto;
+    margin-top: 64px;
+    margin-left: 10%;
+    border-radius: 28px;
+    font-family: "PRegular";
+    color: #666666;
+    background: #FFFFFF;
+    border: 1px solid #E6DCCB; /* 심플 아웃라인 */
+    width: 76%;
+    max-width: 960px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 24px 20px;
+    overflow: hidden;
+}
+
+/* Toss-like reveal animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 600ms ease, transform 600ms ease;
+    will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+    opacity: 1;
     transform: translateY(0);
 }
+
+/* Feature cards grid */
+.features {
+    width: 80%;
+    margin: 60px auto 100px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+}
+
+.feature-card {
+    background: #EFE6D6;
+    border: 1px solid #DCCFBF;
+    border-radius: 16px;
+    padding: 20px;
+    color: #444444;
+    transition: transform 180ms ease, box-shadow 200ms ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+}
+
+.feature-card h3 {
+    margin: 0 0 8px 0;
+    font-family: "PBold";
+    color: #333333;
+    font-size: 20px;
+}
+
+.feature-card p {
+    color: #666666;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* CTA section */
+.cta {
+    width: 76%;
+    max-width: 960px;
+    margin: 72px 0 120px 10%;
+    text-align: center;
+    padding: 32px 20px;
+    border-radius: 20px;
+    background: #EFE6D6;
+    border: 1px solid #DCCFBF;
+}
+
+/* Auto-center these cards across wide screens */
+.main1, .main2, .cta {
+    margin-left: calc((100% - min(76%, 960px)) / 2);
+}
+
+.cta h2 {
+    margin: 0 0 12px 0;
+    font-family: "PBold";
+    color: #333333;
+}
+
+.cta p {
+    margin: 0 0 20px 0;
+    color: #666666;
+}
+
+.cta .actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Nav underline micro interaction */
+nav ul li a { position: relative; }
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 2px;
+    background: #666666;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 200ms ease;
+}
+nav ul li a:hover::after { transform: scaleX(1); }
+
+/* Removed app-like controls for focused landing page */
 #content-main{
     font-family: "PBold";
     color: #333333;
-    font-size: 50px;
-    margin-top: 20px;
+    font-size: 36px;
+    margin-top: 8px;
+    position: relative;
+}
+.main1 #content-main::after {
+    content: "";
+    display: block;
+    width: 96px;
+    height: 4px;
+    background: #6B5B4D;
+    opacity: 0.5;
+    border-radius: 999px;
+    margin: 12px auto 0 auto;
+}
+.main2 #content-main::after {
+    content: "";
+    display: block;
+    width: 96px;
+    height: 4px;
+    background: #6B5B4D;
+    opacity: 0.5;
+    border-radius: 999px;
+    margin: 12px auto 0 auto;
 }
 .content-title {
     font-family: "PBold";
     color: #444444;
     font-size: 30px;
     margin-top: 10px;
+    line-height: 1.35;
 }
 
 .content-text {
     color: #666666;
     font-size: 17px;
+    line-height: 1.65;
+}
+
+/* Why section restyle */
+.section-divider {
+    border: none;
+    height: 1px;
+    background: #6B5B4D;
+    opacity: 0.2;
+    margin: 12px 0 16px 0;
+}
+
+.benefits {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 14px;
+    margin-top: 4px;
+}
+
+/* 기능 리스트는 약간 더 조밀하게 */
+.features-list {
+    width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.benefit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    padding: 12px 14px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.35);
+    border: 1px solid #E6DCCB;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    transition: transform 180ms ease, box-shadow 200ms ease, background 200ms ease;
+}
+
+.benefit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+    background: rgba(255, 255, 255, 0.45);
+}
+
+.benefit-icon {
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: #EDE6D6;
+    border: 1px solid #E0D7C7;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.4);
+    font-size: 16px;
+    transition: transform 180ms ease;
+}
+
+.benefit:hover .benefit-icon { transform: scale(1.05); }
+
+.benefit-text h3 {
+    margin: 0 0 2px 0;
+    font-family: "PBold";
+    color: #333333;
+    font-size: 16px;
+}
+
+.benefit-text p {
+    margin: 0;
+    color: #666666;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Responsive layout */
+@media (max-width: 1024px) {
+    nav ul { padding: 0 16px; height: 60px; }
+    .main1, .main2, .cta { width: 84%; margin-left: 8%; }
+    .main1, .main2, .cta { border-radius: 24px; padding: 22px 18px; }
+    #content-main { font-size: 34px; }
+    .benefits { width: 86%; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+    h1 { font-size: 48px; padding-top: 90px; }
+    #main-subtitle { font-size: 17px; }
+}
+
+@media (max-width: 768px) {
+    nav ul { padding: 0 14px; height: 58px; }
+    nav ul li a { padding: 10px 6px; display: inline-block; }
+    .main1, .main2, .cta { width: 90%; margin-left: 5%; border-radius: 22px; padding: 20px 16px; }
+    #content-main { font-size: 30px; }
+    .section-divider { margin: 10px 0 14px 0; }
+    .benefits { width: 92%; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+    .features-list { width: 92%; grid-template-columns: 1fr 1fr; }
+    .benefit-icon { width: 30px; height: 30px; font-size: 15px; }
+    .benefit-text h3 { font-size: 15px; }
+    .benefit-text p { font-size: 13.5px; }
+    h1 { font-size: 36px; padding-top: 80px; }
+    #main-subtitle { font-size: 16px; }
+    button { padding: 12px 22px; font-size: 14px; }
+}
+
+@media (max-width: 480px) {
+    nav ul { padding: 0 12px; height: 56px; }
+    .main1, .main2, .cta { width: 94%; margin-left: 3%; border-radius: 20px; padding: 18px 14px; }
+    #content-main { font-size: 28px; }
+    .main1 #content-main::after, .main2 #content-main::after { width: 80px; height: 3px; }
+    .benefits { width: 100%; grid-template-columns: 1fr; gap: 10px; }
+    .features-list { width: 100%; grid-template-columns: 1fr; }
+    .benefit-icon { width: 28px; height: 28px; font-size: 14px; border-radius: 10px; }
+    .benefit-text h3 { font-size: 14.5px; }
+    .benefit-text p { font-size: 13px; line-height: 1.45; }
+    h1 { font-size: 30px; line-height: 1.25; padding-top: 72px; }
+    #main-subtitle { font-size: 15px; }
+    button { padding: 11px 18px; font-size: 13px; }
+    .cta { padding: 24px 14px; }
+}
+
+/* Desktop layout: ensure horizontal arrangement */
+@media (min-width: 1200px) {
+    .benefits { width: 100%; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+    .features-list { width: 100%; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
 }
